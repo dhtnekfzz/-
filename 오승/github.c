@@ -1,30 +1,34 @@
 #include <stdio.h>
 
-void encrypt(char cipher[], int shift);
+void encrypt(char buf[], int shift);
 
-int main(void) {
-
-	char cipher[50];
+int main(void)
+{
+	FILE *fp;
+	fp = fopen("abc.txt","r");
+	char buf[100];
+	fgets(buf, 100, fp);
+	fp = fopen("abc.txt", "w");
 	int shift = 3;
-
-
-	printf("문자열을 입력하시오: ");
-	gets_s(cipher, 50);  
-	encrypt(cipher, shift);
-	return 0;
+	encrypt(buf, shift);
+	fputs(buf, fp);
+	
+	fclose(fp);
 }
-void encrypt(char cipher[], int shift) {
+void encrypt(char buf[], int shift) {
 	int i = 0;
 
 
-	while (cipher[i] != '\0') {
-		if (cipher[i] >= 'A' && cipher[i] <= 'z') {
+	while (buf[i] != '\0') 
+	{
+		if (buf[i] >= 'A' && buf[i] <= 'z') 
+		{
 
-			cipher[i] += shift;
-			if (cipher[i] > 'z')
-				cipher[i] -= 26;
+			buf[i] += shift;
+			if (buf[i] > 'z')
+				buf[i] -= 26;
 		}
 		i++;
 	}
-	printf("암호화된 문자열: %s \n", cipher);
+	
 }
