@@ -8,8 +8,10 @@ int main(void)
 	fp = fopen("abc.txt","r");
 	char buf[100];
 	fgets(buf, 100, fp);
-	fp = fopen("abc.txt", "w");
-	int shift = 3;
+	fp = fopen("D:\\¿À½Â\\¿À½Â\\abc.txt", "w");
+	int shift;
+	printf("shift=");
+	scanf("%d", &shift);
 	encrypt(buf, shift);
 	fputs(buf, fp);
 	
