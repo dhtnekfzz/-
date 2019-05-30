@@ -5,10 +5,16 @@ void encrypt(char buf[], int shift);
 int main(void)
 {
 	FILE *fp;
-	fp = fopen("abc.txt","r");
+	fp = fopen("abc.txt","w+");
 	char buf[100];
+	char a[100] = { "Hello World" };
+	fputs(a, fp);
+	fclose(fp);
+	fopen("abc.txt", "r");
 	fgets(buf, 100, fp);
-	fp = fopen("D:\\¿À½Â\\¿À½Â\\abc.txt", "w");
+	fclose(fp);
+	
+	fp = fopen("s.enc.txt", "w+");
 	int shift;
 	printf("shift=");
 	scanf("%d", &shift);
